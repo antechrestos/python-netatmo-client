@@ -1,0 +1,37 @@
+{
+  "body": {
+    "events_list": [
+      {
+        "message": "A115 connect\u00e9e",
+        "type": "connection",
+        "id": "57bfedc57488dac4844472e0",
+        "camera_id": "70:ee:50:16:34:30",
+        "time": 1472196036
+      },
+      {
+        "message": "A115 d\u00e9connect\u00e9e",
+        "type": "disconnection",
+        "id": "57bfa5c85ef58d92a23b2151",
+        "camera_id": "70:ee:50:16:34:30",
+        "time": 1472177607
+      },
+      {
+        "message": "A115 d\u00e9marr\u00e9e",
+        "type": "boot",
+        "id": "57bab83649c75f0b4b8b48a5",
+        "camera_id": "70:ee:50:16:34:30",
+        "time": 1471854649
+      },
+      {
+        "message": "A115 connect\u00e9e",
+        "type": "connection",
+        "id": "57bab4d1c02738b931e9fd4b",
+        "camera_id": "70:ee:50:16:34:30",
+        "time": 1471853776
+      }
+    ]
+  },
+  "status": "ok",
+  "time_exec": 1.427766084671,
+  "time_server": 1472988835
+}

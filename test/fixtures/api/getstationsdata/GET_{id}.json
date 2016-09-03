@@ -1,0 +1,143 @@
+{
+  "body": {
+    "user": {
+      "mail": "someone@somewhere.com",
+      "administrative": {
+        "lang": "fr-FR",
+        "reg_locale": "fr-FR",
+        "windunit": 0,
+        "feel_like_algo": 0,
+        "pressureunit": 0,
+        "country": "FR",
+        "unit": 0
+      }
+    },
+    "devices": [
+      {
+        "last_setup": 1421145837,
+        "data_type": [
+          "Temperature",
+          "CO2",
+          "Humidity",
+          "Noise",
+          "Pressure"
+        ],
+        "date_setup": 1421145837,
+        "firmware": 111,
+        "modules": [
+          {
+            "last_setup": 1421145776,
+            "rf_status": 19,
+            "data_type": [
+              "Temperature",
+              "Humidity"
+            ],
+            "last_message": 1472891613,
+            "firmware": 43,
+            "dashboard_data": {
+              "date_min_temp": 1472883450,
+              "Temperature": 23.3,
+              "time_utc": 1472891600,
+              "temp_trend": "stable",
+              "Humidity": 63,
+              "min_temp": 23.2,
+              "date_max_temp": 1472853667,
+              "max_temp": 24.5
+            },
+            "module_name": "H954",
+            "battery_vp": 5200,
+            "_id": "02:00:00:06:10:30",
+            "type": "NAModule1",
+            "battery_percent": 67,
+            "last_seen": 1472891600
+          },
+          {
+            "last_setup": 1421166555,
+            "rf_status": 74,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1457516951,
+            "firmware": 43,
+            "dashboard_data": {
+              "CO2": 882,
+              "Temperature": 22.5,
+              "time_utc": 1457516938,
+              "Humidity": 38,
+              "date_min_temp": 1457482643,
+              "min_temp": 16.8,
+              "date_max_temp": 1457516887,
+              "max_temp": 22.5
+            },
+            "module_name": "H958",
+            "battery_vp": 4297,
+            "_id": "03:00:00:01:b7:08",
+            "type": "NAModule4",
+            "battery_percent": 5,
+            "last_seen": 1457516938
+          },
+          {
+            "last_setup": 1434727869,
+            "rf_status": 68,
+            "data_type": [
+              "Rain"
+            ],
+            "last_message": 1472891613,
+            "firmware": 8,
+            "dashboard_data": {
+              "time_utc": 1472891600,
+              "sum_rain_24": 0,
+              "sum_rain_1": 0,
+              "Rain": 0
+            },
+            "module_name": "Pluviom\u00e8tre",
+            "battery_vp": 5244,
+            "_id": "05:00:00:00:d7:18",
+            "type": "NAModule3",
+            "battery_percent": 69,
+            "last_seen": 1472891613
+          }
+        ],
+        "co2_calibrating": false,
+        "last_status_store": 1472891616,
+        "wifi_status": 67,
+        "place": {
+          "timezone": "Europe/Paris",
+          "city": "Paris",
+          "altitude": 220,
+          "location": [
+            2.333300113678,
+            48.86669921875
+          ],
+          "country": "FR"
+        },
+        "dashboard_data": {
+          "Noise": 36,
+          "Temperature": 22.8,
+          "time_utc": 1472891601,
+          "temp_trend": "stable",
+          "Humidity": 68,
+          "Pressure": 1021.4,
+          "CO2": 643,
+          "min_temp": 22.6,
+          "AbsolutePressure": 995.1,
+          "pressure_trend": "stable",
+          "date_max_temp": 1472853698,
+          "date_min_temp": 1472879569,
+          "max_temp": 23.8
+        },
+        "cipher_id": "enc:16:v4t78nJ8iqZeG1Oj2t4gYveQyc5BZ3QzeMTcGaoOTX/1o154jMRzUL0gHwAK1mMb",
+        "last_upgrade": 1440081835,
+        "module_name": "H956",
+        "station_name": "Soft",
+        "_id": "70:ee:50:05:ee:8a",
+        "type": "NAMain"
+      }
+    ]
+  },
+  "status": "ok",
+  "time_exec": 0.038957834243774,
+  "time_server": 1472892048
+}

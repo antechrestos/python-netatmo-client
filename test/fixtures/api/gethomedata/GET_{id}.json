@@ -1,0 +1,49 @@
+{
+  "body": {
+    "homes": [
+      {
+        "name": "Somewhere",
+        "cameras": [
+          {
+            "status": "off",
+            "name": "A115",
+            "sd_status": "off",
+            "alim_status": "on",
+            "type": "NACamera",
+            "id": "70:ee:50:16:34:30"
+          }
+        ],
+        "id": "5757eb5545a1e3a03b8b4584",
+        "persons": [
+          {
+            "out_of_sight": true,
+            "face": {
+              "version": 1,
+              "id": "579763cfea00a0709b8b4637",
+              "key": "3e10c7d9ea28dd53d72486e0207571398d1f8726f7d2f96192caa46307dffa17"
+            },
+            "id": "ebbc2114-994e-4bfb-b18d-deafafef5e19",
+            "last_seen": 1469539273
+          }
+        ],
+        "place": {
+          "timezone": "Europe/Berlin",
+          "city": "Stahnsdorf",
+          "country": "DE"
+        },
+        "events": []
+      }
+    ],
+    "user": {
+      "lang": "fr-FR",
+      "reg_locale": "fr-FR",
+      "country": "FR"
+    },
+    "global_info": {
+      "show_tags": true
+    }
+  },
+  "status": "ok",
+  "time_exec": 0.040711164474487,
+  "time_server": 1472988028
+}

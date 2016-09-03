@@ -1,0 +1,1266 @@
+{
+  "body": {
+    "user": {
+      "mail": "someone@somewhere.com",
+      "administrative": {
+        "lang": "fr-FR",
+        "reg_locale": "fr-FR",
+        "windunit": 0,
+        "feel_like_algo": 0,
+        "pressureunit": 0,
+        "country": "FR",
+        "unit": 0
+      }
+    },
+    "devices": [
+      {
+        "last_setup": 1410879900,
+        "plug_connected_boiler": false,
+        "firmware": 49,
+        "modules": [
+          {
+            "last_therm_seen": 1460454084,
+            "event_history": {
+              "low_battery_events": [
+                {
+                  "timestamp": 1460382256
+                }
+              ]
+            },
+            "rf_status": 44,
+            "last_message": 1460454084,
+            "measured": {
+              "setpoint_temp": 20,
+              "temperature": 24.6,
+              "time": 1460454084
+            },
+            "setpoint": {
+              "setpoint_mode": "program"
+            },
+            "firmware": 38,
+            "therm_orientation": 3,
+            "battery_percent": 18,
+            "module_name": "Thermostat",
+            "battery_vp": 3263,
+            "_id": "04:00:00:03:2c:0c",
+            "type": "NATherm1",
+            "therm_relay_cmd": 0,
+            "therm_program_list": [
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "name": "Comfort",
+                    "temp": 19,
+                    "id": 0
+                  },
+                  {
+                    "type": 1,
+                    "name": "nuit",
+                    "temp": 17,
+                    "id": 1
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 13
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 8
+                  },
+                  {
+                    "type": 5,
+                    "name": "Eco",
+                    "temp": 16,
+                    "id": 5
+                  },
+                  {
+                    "type": 4,
+                    "name": "frais",
+                    "temp": 8,
+                    "id": 6
+                  },
+                  {
+                    "type": 4,
+                    "name": "chaud",
+                    "temp": 20,
+                    "id": 7
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 360,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1800,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3240,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4680,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6120,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7560,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9000,
+                    "id": 7
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "selected": true,
+                "name": "Famille",
+                "program_id": "54b3ac7b1c77599299eeae5f"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "name": "Confort",
+                    "temp": 19,
+                    "id": 0
+                  },
+                  {
+                    "type": 1,
+                    "name": "nuit",
+                    "temp": 17,
+                    "id": 1
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 12
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "name": "\u00c9co",
+                    "temp": 16,
+                    "id": 5
+                  },
+                  {
+                    "type": 4,
+                    "name": "tr\u00e8s chaud",
+                    "temp": 25,
+                    "id": 6
+                  },
+                  {
+                    "type": 4,
+                    "name": "froid",
+                    "temp": 15,
+                    "id": 7
+                  },
+                  {
+                    "type": 4,
+                    "name": "Froid",
+                    "temp": 20,
+                    "id": 8
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 5
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1440,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 5
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2880,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 5
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 5
+                  },
+                  {
+                    "m_offset": 5460,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 5
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7680,
+                    "id": 6
+                  },
+                  {
+                    "m_offset": 8340,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9120,
+                    "id": 6
+                  },
+                  {
+                    "m_offset": 9780,
+                    "id": 0
+                  }
+                ],
+                "name": "Standard",
+                "program_id": "54b3ac7b1c77599299eeae60"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "id": 0,
+                    "temp": 19
+                  },
+                  {
+                    "type": 1,
+                    "id": 1,
+                    "temp": 17
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 12
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "id": 4,
+                    "temp": 16
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 5460,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "name": "Thirdone",
+                "program_id": "55dc6ab229977ed3a6f22332"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "id": 0,
+                    "temp": 19
+                  },
+                  {
+                    "type": 1,
+                    "id": 1,
+                    "temp": 17
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 12
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "id": 4,
+                    "temp": 16
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 5460,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "name": "Fourthone",
+                "program_id": "55dc6ac6485a887fbf7a9fa3"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "name": "Confort",
+                    "temp": 19,
+                    "id": 0
+                  },
+                  {
+                    "type": 1,
+                    "name": "Nuit",
+                    "temp": 17,
+                    "id": 1
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 12
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "name": "\u00c9co",
+                    "temp": 16,
+                    "id": 4
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 5460,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "name": "cinquieme",
+                "program_id": "55e8681facb39b8b25aef7c8"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "id": 0,
+                    "temp": 23
+                  },
+                  {
+                    "type": 1,
+                    "id": 1,
+                    "temp": 21
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 16
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "id": 4,
+                    "temp": 16
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 5460,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "name": "fran\u00e7ais",
+                "program_id": "560415772baa3c2f7d23bf5e"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "id": 0,
+                    "temp": 19
+                  },
+                  {
+                    "type": 1,
+                    "id": 1,
+                    "temp": 17
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 12
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "id": 4,
+                    "temp": 16
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 5460,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "name": "Test",
+                "program_id": "566010f8c6aa4210778b4d44"
+              }
+            ]
+          }
+        ],
+        "last_plug_seen": 1460454084,
+        "last_status_store": 1460454084,
+        "wifi_status": 25,
+        "place": {
+          "city": "Mont-saint-martin",
+          "improveLocProposed": true,
+          "country": "FR",
+          "from_ip": true,
+          "location": [
+            5.6781997680664,
+            45.270999908447
+          ],
+          "timezone": "Europe/Paris"
+        },
+        "udp_conn": true,
+        "last_bilan": {
+          "y": 2016,
+          "m": 8
+        },
+        "station_name": "DM2E",
+        "_id": "70:ee:50:03:2a:5e",
+        "type": "NAPlug"
+      },
+      {
+        "last_setup": 1426524416,
+        "plug_connected_boiler": true,
+        "firmware": 47,
+        "modules": [
+          {
+            "last_therm_seen": 1448894724,
+            "rf_status": 56,
+            "last_message": 1448894724,
+            "measured": {
+              "setpoint_temp": 7,
+              "temperature": 21.4,
+              "time": 1448894692
+            },
+            "setpoint": {
+              "setpoint_mode": "hg"
+            },
+            "firmware": 35,
+            "therm_orientation": 3,
+            "battery_percent": 81,
+            "module_name": "Thermostat",
+            "battery_vp": 4210,
+            "_id": "04:00:00:06:2d:02",
+            "type": "NATherm1",
+            "therm_relay_cmd": 0,
+            "therm_program_list": [
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "name": "Com",
+                    "temp": 19,
+                    "id": 0
+                  },
+                  {
+                    "type": 1,
+                    "name": "Night",
+                    "temp": 17,
+                    "id": 1
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 12
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "name": "Eco",
+                    "temp": 16,
+                    "id": 4
+                  },
+                  {
+                    "type": 4,
+                    "name": "My period 1",
+                    "temp": 23.5,
+                    "id": 5
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4320,
+                    "id": 5
+                  },
+                  {
+                    "m_offset": 5580,
+                    "id": 1
+                  }
+                ],
+                "name": "Holiday",
+                "program_id": "551038a51b7759615a64544b"
+              },
+              {
+                "zones": [
+                  {
+                    "type": 0,
+                    "name": "Comfort",
+                    "temp": 18,
+                    "id": 0
+                  },
+                  {
+                    "type": 1,
+                    "name": "Night",
+                    "temp": 16,
+                    "id": 1
+                  },
+                  {
+                    "type": 2,
+                    "id": 2,
+                    "temp": 11
+                  },
+                  {
+                    "type": 3,
+                    "id": 3,
+                    "temp": 7
+                  },
+                  {
+                    "type": 5,
+                    "name": "Eco",
+                    "temp": 25,
+                    "id": 4
+                  }
+                ],
+                "timetable": [
+                  {
+                    "m_offset": 0,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 420,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 480,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 1140,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1320,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 1860,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 1920,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 2580,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 2760,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 3300,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 3360,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 4020,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4200,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 4740,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 4800,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 5520,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 5640,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 6180,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 6240,
+                    "id": 4
+                  },
+                  {
+                    "m_offset": 6900,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 7080,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 7620,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 8520,
+                    "id": 1
+                  },
+                  {
+                    "m_offset": 9060,
+                    "id": 0
+                  },
+                  {
+                    "m_offset": 9960,
+                    "id": 1
+                  }
+                ],
+                "selected": true,
+                "name": "ndard",
+                "program_id": "553126591e7759da0e5d9b6f"
+              }
+            ]
+          }
+        ],
+        "last_plug_seen": 1448894731,
+        "last_status_store": 1448894731,
+        "wifi_status": 53,
+        "place": {
+          "city": "Paris",
+          "improveLocProposed": true,
+          "country": "FR",
+          "from_ip": true,
+          "location": [
+            2.333300113678,
+            48.86669921875
+          ],
+          "timezone": "Europe/Paris"
+        },
+        "udp_conn": true,
+        "last_bilan": {
+          "y": 2016,
+          "m": 8
+        },
+        "station_name": "Soft",
+        "_id": "70:ee:50:06:4a:f8",
+        "type": "NAPlug"
+      }
+    ]
+  },
+  "status": "ok",
+  "time_exec": 0.023986101150513,
+  "time_server": 1472986016
+}

@@ -1,0 +1,540 @@
+{
+  "body": {
+    "user": {
+      "mail": "someone@somewhere.com",
+      "administrative": {
+        "lang": "fr-FR",
+        "reg_locale": "fr-FR",
+        "windunit": 0,
+        "feel_like_algo": 0,
+        "pressureunit": 0,
+        "country": "FR",
+        "unit": 0
+      }
+    },
+    "devices": [
+      {
+        "last_setup": 1455274856,
+        "data_type": [
+          "Temperature",
+          "CO2",
+          "Humidity",
+          "Noise",
+          "Pressure"
+        ],
+        "date_setup": 1389288326,
+        "firmware": 124,
+        "modules": [
+          {
+            "last_setup": 1406208126,
+            "rf_status": 55,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1430313887,
+            "firmware": 43,
+            "dashboard_data": {
+              "CO2": 423,
+              "Temperature": 23.2,
+              "time_utc": 1430314131,
+              "Humidity": 36,
+              "date_min_temp": 1430280246,
+              "min_temp": 19.2,
+              "date_max_temp": 1430313105,
+              "max_temp": 23.2
+            },
+            "module_name": "FLOWER",
+            "battery_vp": 4613,
+            "_id": "03:00:00:00:dc:c6",
+            "type": "NAModule4",
+            "battery_percent": 23,
+            "last_seen": 1430313874
+          },
+          {
+            "last_setup": 1406208184,
+            "rf_status": 63,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1413748678,
+            "firmware": 42,
+            "dashboard_data": {
+              "CO2": 739,
+              "Temperature": 24.8,
+              "time_utc": 1413748639,
+              "Humidity": 59,
+              "date_min_temp": 1413745923,
+              "min_temp": 24.8,
+              "date_max_temp": 1413745923,
+              "max_temp": 24.8
+            },
+            "module_name": "Kitchen",
+            "battery_vp": 5312,
+            "_id": "03:00:00:00:dc:d4",
+            "type": "NAModule4",
+            "battery_percent": 62,
+            "last_seen": 1413748639
+          },
+          {
+            "last_setup": 1406208211,
+            "rf_status": 48,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1413748678,
+            "firmware": 42,
+            "dashboard_data": {
+              "CO2": 644,
+              "Temperature": 24.8,
+              "time_utc": 1413748627,
+              "Humidity": 60,
+              "date_min_temp": 1413745910,
+              "min_temp": 24.8,
+              "date_max_temp": 1413745910,
+              "max_temp": 24.8
+            },
+            "module_name": "Screen",
+            "battery_vp": 5302,
+            "_id": "03:00:00:00:cd:9a",
+            "type": "NAModule4",
+            "battery_percent": 61,
+            "last_seen": 1413748678
+          },
+          {
+            "last_setup": 1411043291,
+            "rf_status": 120,
+            "data_type": [
+              "Temperature",
+              "Humidity"
+            ],
+            "last_message": 1470062602,
+            "firmware": 44,
+            "dashboard_data": {
+              "date_min_temp": 1470038840,
+              "Temperature": 25,
+              "time_utc": 1470062570,
+              "Humidity": 53,
+              "min_temp": 24.5,
+              "date_max_temp": 1470002541,
+              "max_temp": 28.6
+            },
+            "module_name": "module ext\u00e9rieur",
+            "battery_vp": 5454,
+            "_id": "02:00:00:01:e4:4a",
+            "type": "NAModule1",
+            "battery_percent": 77,
+            "last_seen": 1470062570
+          }
+        ],
+        "co2_calibrating": false,
+        "last_status_store": 1472891178,
+        "wifi_status": 38,
+        "place": {
+          "timezone": "Europe/Paris",
+          "city": "Fontaine",
+          "altitude": 220,
+          "location": [
+            5.6827001571655,
+            45.198398590088
+          ],
+          "country": "FR"
+        },
+        "dashboard_data": {
+          "Noise": 38,
+          "Temperature": 24.7,
+          "time_utc": 1472891164,
+          "temp_trend": "stable",
+          "Humidity": 58,
+          "Pressure": 1023.3,
+          "CO2": 445,
+          "min_temp": 24.5,
+          "AbsolutePressure": 996.9,
+          "pressure_trend": "stable",
+          "date_max_temp": 1472853888,
+          "date_min_temp": 1472883891,
+          "max_temp": 26.1
+        },
+        "cipher_id": "enc:16:7+z1jaaCdmAqVYz4/MXNUAYChLkLaE3Hm3CcBBQBt0k8GOWa/fVoTyR8UlT9TVn5",
+        "last_upgrade": 1440115957,
+        "module_name": "Indoor",
+        "station_name": "DM2E",
+        "_id": "70:ee:50:01:c7:10",
+        "type": "NAMain"
+      },
+      {
+        "last_setup": 1421145837,
+        "data_type": [
+          "Temperature",
+          "CO2",
+          "Humidity",
+          "Noise",
+          "Pressure"
+        ],
+        "date_setup": 1421145837,
+        "firmware": 111,
+        "modules": [
+          {
+            "last_setup": 1421145776,
+            "rf_status": 19,
+            "data_type": [
+              "Temperature",
+              "Humidity"
+            ],
+            "last_message": 1472891613,
+            "firmware": 43,
+            "dashboard_data": {
+              "date_min_temp": 1472883450,
+              "Temperature": 23.3,
+              "time_utc": 1472891600,
+              "temp_trend": "stable",
+              "Humidity": 63,
+              "min_temp": 23.2,
+              "date_max_temp": 1472853667,
+              "max_temp": 24.5
+            },
+            "module_name": "H954",
+            "battery_vp": 5200,
+            "_id": "02:00:00:06:10:30",
+            "type": "NAModule1",
+            "battery_percent": 67,
+            "last_seen": 1472891600
+          },
+          {
+            "last_setup": 1421166555,
+            "rf_status": 74,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1457516951,
+            "firmware": 43,
+            "dashboard_data": {
+              "CO2": 882,
+              "Temperature": 22.5,
+              "time_utc": 1457516938,
+              "Humidity": 38,
+              "date_min_temp": 1457482643,
+              "min_temp": 16.8,
+              "date_max_temp": 1457516887,
+              "max_temp": 22.5
+            },
+            "module_name": "H958",
+            "battery_vp": 4297,
+            "_id": "03:00:00:01:b7:08",
+            "type": "NAModule4",
+            "battery_percent": 5,
+            "last_seen": 1457516938
+          },
+          {
+            "last_setup": 1434727869,
+            "rf_status": 68,
+            "data_type": [
+              "Rain"
+            ],
+            "last_message": 1472891613,
+            "firmware": 8,
+            "dashboard_data": {
+              "time_utc": 1472891600,
+              "sum_rain_24": 0,
+              "sum_rain_1": 0,
+              "Rain": 0
+            },
+            "module_name": "Pluviom\u00e8tre",
+            "battery_vp": 5244,
+            "_id": "05:00:00:00:d7:18",
+            "type": "NAModule3",
+            "battery_percent": 69,
+            "last_seen": 1472891613
+          }
+        ],
+        "co2_calibrating": false,
+        "last_status_store": 1472891616,
+        "wifi_status": 67,
+        "place": {
+          "timezone": "Europe/Paris",
+          "city": "Paris",
+          "altitude": 220,
+          "location": [
+            2.333300113678,
+            48.86669921875
+          ],
+          "country": "FR"
+        },
+        "dashboard_data": {
+          "Noise": 36,
+          "Temperature": 22.8,
+          "time_utc": 1472891601,
+          "temp_trend": "stable",
+          "Humidity": 68,
+          "Pressure": 1021.4,
+          "CO2": 643,
+          "min_temp": 22.6,
+          "AbsolutePressure": 995.1,
+          "pressure_trend": "stable",
+          "date_max_temp": 1472853698,
+          "date_min_temp": 1472879569,
+          "max_temp": 23.8
+        },
+        "cipher_id": "enc:16:v4t78nJ8iqZeG1Oj2t4gYveQyc5BZ3QzeMTcGaoOTX/1o154jMRzUL0gHwAK1mMb",
+        "last_upgrade": 1440081835,
+        "module_name": "H956",
+        "station_name": "Soft",
+        "_id": "70:ee:50:05:ee:8a",
+        "type": "NAMain"
+      },
+      {
+        "read_only": true,
+        "last_setup": 1359763200,
+        "data_type": [
+          "Temperature",
+          "CO2",
+          "Humidity",
+          "Noise",
+          "Pressure"
+        ],
+        "date_setup": 1359763200,
+        "firmware": 124,
+        "modules": [
+          {
+            "last_setup": 1369407160,
+            "rf_status": 36,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1472891399,
+            "firmware": 44,
+            "dashboard_data": {
+              "CO2": 486,
+              "Temperature": 24.7,
+              "time_utc": 1472891380,
+              "temp_trend": "stable",
+              "Humidity": 51,
+              "date_min_temp": 1472883228,
+              "min_temp": 24.6,
+              "date_max_temp": 1472854823,
+              "max_temp": 25.3
+            },
+            "module_name": "Coffee Machine",
+            "battery_vp": 5827,
+            "_id": "03:00:00:00:1c:24",
+            "type": "NAModule4",
+            "battery_percent": 90,
+            "last_seen": 1472891380
+          },
+          {
+            "last_setup": 1447087238,
+            "rf_status": 66,
+            "data_type": [
+              "Wind"
+            ],
+            "last_message": 1472891399,
+            "firmware": 17,
+            "dashboard_data": {
+              "date_min_temp": 1472853619,
+              "date_max_wind_str": 1472859662,
+              "time_utc": 1472891386,
+              "WindHistoric": [
+                {
+                  "time_utc": 1472888060,
+                  "WindStrength": 2,
+                  "WindAngle": 194
+                },
+                {
+                  "time_utc": 1472888368,
+                  "WindStrength": 1,
+                  "WindAngle": 168
+                },
+                {
+                  "time_utc": 1472888668,
+                  "WindStrength": 2,
+                  "WindAngle": 210
+                },
+                {
+                  "time_utc": 1472888969,
+                  "WindStrength": 2,
+                  "WindAngle": 153
+                },
+                {
+                  "time_utc": 1472889271,
+                  "WindStrength": 1,
+                  "WindAngle": 167
+                },
+                {
+                  "time_utc": 1472889572,
+                  "WindStrength": 2,
+                  "WindAngle": 149
+                },
+                {
+                  "time_utc": 1472889874,
+                  "WindStrength": 2,
+                  "WindAngle": 192
+                },
+                {
+                  "time_utc": 1472890175,
+                  "WindStrength": 2,
+                  "WindAngle": 221
+                },
+                {
+                  "time_utc": 1472890482,
+                  "WindStrength": 2,
+                  "WindAngle": 219
+                },
+                {
+                  "time_utc": 1472890784,
+                  "WindStrength": 2,
+                  "WindAngle": 215
+                },
+                {
+                  "time_utc": 1472891085,
+                  "WindStrength": 2,
+                  "WindAngle": 183
+                },
+                {
+                  "time_utc": 1472891386,
+                  "WindStrength": 1,
+                  "WindAngle": 168
+                }
+              ],
+              "GustStrength": 5,
+              "max_wind_str": 13,
+              "WindStrength": 1,
+              "GustAngle": 212,
+              "max_wind_angle": 225,
+              "min_temp": -0.8,
+              "date_max_temp": 1472858451,
+              "WindAngle": 168,
+              "max_temp": 0
+            },
+            "module_name": "Wind Gauge",
+            "battery_vp": 5171,
+            "_id": "06:00:00:00:00:de",
+            "type": "NAModule2",
+            "battery_percent": 60,
+            "last_seen": 1472891399
+          },
+          {
+            "last_setup": 1447091602,
+            "rf_status": 42,
+            "data_type": [
+              "Temperature",
+              "CO2",
+              "Humidity"
+            ],
+            "last_message": 1472891399,
+            "firmware": 44,
+            "dashboard_data": {
+              "CO2": 438,
+              "Temperature": 24.7,
+              "time_utc": 1472891367,
+              "temp_trend": "stable",
+              "Humidity": 49,
+              "date_min_temp": 1472890136,
+              "min_temp": 24.6,
+              "date_max_temp": 1472855426,
+              "max_temp": 25.4
+            },
+            "module_name": "Reception",
+            "battery_vp": 5743,
+            "_id": "03:00:00:00:eb:d8",
+            "type": "NAModule4",
+            "battery_percent": 86,
+            "last_seen": 1472891367
+          },
+          {
+            "last_setup": 1453731167,
+            "rf_status": 59,
+            "data_type": [
+              "Rain"
+            ],
+            "last_message": 1472891399,
+            "firmware": 8,
+            "dashboard_data": {
+              "time_utc": 1472891380,
+              "sum_rain_24": 0,
+              "sum_rain_1": 0,
+              "Rain": 0
+            },
+            "module_name": "Rain Gauge",
+            "battery_vp": 4568,
+            "_id": "05:00:00:00:0f:98",
+            "type": "NAModule3",
+            "battery_percent": 40,
+            "last_seen": 1472891393
+          },
+          {
+            "last_setup": 1408394204,
+            "rf_status": 63,
+            "data_type": [
+              "Temperature",
+              "Humidity"
+            ],
+            "last_message": 1472891399,
+            "firmware": 44,
+            "dashboard_data": {
+              "date_min_temp": 1472879567,
+              "Temperature": 20.2,
+              "time_utc": 1472891360,
+              "temp_trend": "up",
+              "Humidity": 70,
+              "min_temp": 18.2,
+              "date_max_temp": 1472853881,
+              "max_temp": 23.7
+            },
+            "module_name": "Netatmo HQ",
+            "battery_vp": 4570,
+            "_id": "02:00:00:02:c8:72",
+            "type": "NAModule1",
+            "battery_percent": 40,
+            "last_seen": 1472891360
+          }
+        ],
+        "co2_calibrating": false,
+        "last_status_store": 1472891403,
+        "wifi_status": 16,
+        "place": {
+          "timezone": "Europe/Paris",
+          "city": "Saint-Cloud",
+          "altitude": 39,
+          "location": [
+            2.239057,
+            48.830129
+          ],
+          "country": "FR"
+        },
+        "dashboard_data": {
+          "Noise": 34,
+          "Temperature": 23.6,
+          "time_utc": 1472891390,
+          "temp_trend": "stable",
+          "Humidity": 55,
+          "Pressure": 1017.3,
+          "CO2": 455,
+          "min_temp": 23.5,
+          "AbsolutePressure": 1012.7,
+          "pressure_trend": "stable",
+          "date_max_temp": 1472853619,
+          "date_min_temp": 1472882325,
+          "max_temp": 23.9
+        },
+        "cipher_id": "enc:16:IQwThK9q3StlEUopv05xV5nVgXwG9gOMqf7n1nAuBzpSBz5NiU1vDdh6zo8d9WHi",
+        "last_upgrade": 1450157617,
+        "module_name": "Boss's Office",
+        "station_name": "Office in Paris",
+        "_id": "70:ee:50:00:02:20",
+        "type": "NAMain"
+      }
+    ]
+  },
+  "status": "ok",
+  "time_exec": 0.090853929519653,
+  "time_server": 1472891725
+}
