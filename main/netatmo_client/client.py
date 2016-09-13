@@ -81,7 +81,7 @@ class Camera(Domain):
 
     def get_camera_picture(self, image_id, key):
         params = dict(image_id=image_id, key=key)
-        return self._api_caller(requests.get, '/getcamerapicture', params=params)
+        return self._api_caller(requests.get, '/getcamerapicture', params=params, raw_api_call=True).content
 
     def get_events_until(self, home_id, event_id):
         params = dict(home_id=home_id, event_id=event_id)
@@ -215,8 +215,7 @@ class NetatmoClient(object):
         try:
             response = NetatmoClient._invoke(method,
                                              '%s%s' % (NetatmoClient.API_BASE_URL, uri),
-                                             **kwargs) \
-                .json()
+                                             **kwargs)
         except InvalidStatusCode, i:
             if NetatmoClient._is_token_expired(i):
                 try:
@@ -224,8 +223,7 @@ class NetatmoClient(object):
                     _set_token_in_request()
                     response = NetatmoClient._invoke(method,
                                                      '%s%s' % (NetatmoClient.API_BASE_URL, uri),
-                                                     **kwargs) \
-                        .json()
+                                                     **kwargs)
                 except InvalidStatusCode, other:
                     if other.status_code / 100 == 4:
                         self._access_token = None
@@ -233,11 +231,15 @@ class NetatmoClient(object):
                     raise
             else:
                 raise
-        _logger.debug('%s - %s', uri, json.dumps(response))
-        if response['status'] != "ok":
-            raise InvalidStatusCode(httplib.INTERNAL_SERVER_ERROR, response)
+        if kwargs.get('raw_api_call', False):
+            return response
         else:
-            return response.get('body')
+            result = response.json()
+            _logger.debug('%s - %s', uri, json.dumps(result))
+            if result['status'] != "ok":
+                raise InvalidStatusCode(httplib.INTERNAL_SERVER_ERROR, result)
+            else:
+                return result.get('body')
 
     def _request_tokens(self, form):
         response = NetatmoClient._invoke(requests.post, NetatmoClient.TOKEN_URL, data=form)

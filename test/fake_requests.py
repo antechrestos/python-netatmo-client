@@ -4,7 +4,7 @@ from json import loads
 
 
 class MockResponse(object):
-    def __init__(self, url, status_code, text, headers=None):
+    def __init__(self, url, status_code, text, headers=None, content=None):
         self.status_code = status_code
         self.url = url
         self.text = text
@@ -12,6 +12,8 @@ class MockResponse(object):
         self.is_redirect = status_code == httplib.SEE_OTHER
         if headers is not None:
             self.headers.update(headers)
+        if content is not None:
+            self.content = content
 
     def check_data(self, **kwargs):
         pass
@@ -33,8 +35,9 @@ def mock_response(url, method_name, check_data, status_code, headers, *path_part
                   'rb' if binary_file else 'r')) as f:
             response = MockResponse(url=url,
                                     status_code=status_code,
-                                    text=f.read(),
-                                    headers=headers)
+                                    text=f.read() if not binary_file else None,
+                                    headers=headers,
+                                    content=f.read() if binary_file else None)
     else:
         response = MockResponse(url, status_code, '')
     if check_data is not None:

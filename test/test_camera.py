@@ -140,3 +140,23 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                            'api', 'dropwebhook', 'POST.json')
 
         self.client.camera.drop_webhook()
+
+    @mock.patch('netatmo_client.client.requests')
+    def test_get_camera_picture(self, fake_requests):
+        image_id = 'test-image-id'
+        key = 'test-key'
+
+        def _check_data(**kwargs):
+            self.assertIsNotNone(kwargs.get('params'))
+            self.assertEqual(kwargs.get('params').get('image_id'), image_id)
+            self.assertEqual(kwargs.get('params').get('key'), key)
+
+        fake_requests.get = mock_response('https://api.netatmo.net/api/getcamerapicture',
+                                          'get',
+                                          _check_data,
+                                          httplib.OK,
+                                          None,
+                                          'api', 'getcamerapicture', 'GET.bin')
+
+        result = self.client.camera.get_camera_picture(image_id=image_id, key=key)
+        self.assertEqual(len(result), 21638)
