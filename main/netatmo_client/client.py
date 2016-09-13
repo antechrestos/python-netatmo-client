@@ -67,10 +67,18 @@ class Thermostat(Domain):
 
     def sync_schedule(self, device_id, module_id, zones, timetable):
         form = dict(device_id=device_id, module_id=module_id, zones=zones, timetable=timetable)
-        self._api_caller(requests.post, '/switchschedule', data=form)
+        self._api_caller(requests.post, '/syncschedule', data=form)
 
 
 class Camera(Domain):
+    def get_home_data(self, home_id=None, number_of_events=None):
+        params = dict()
+        if home_id is not None:
+            params['home_id'] = home_id
+        if number_of_events is not None:
+            params['size'] = number_of_events
+        return self._api_caller(requests.get, '/gethomedata', params=params)
+
     def get_camera_picture(self, image_id, key):
         params = dict(image_id=image_id, key=key)
         return self._api_caller(requests.get, '/getcamerapicture', params=params)
@@ -84,14 +92,6 @@ class Camera(Domain):
         if size is not None:
             params['size'] = size
         return self._api_caller(requests.get, '/getnextevents', params=params)
-
-    def get_home_data(self, home_id=None, number_of_events=None):
-        params = dict()
-        if home_id is not None:
-            params['home_id'] = home_id
-        if number_of_events is not None:
-            params['size'] = number_of_events
-        return self._api_caller(requests.get, '/gethomedata', params=params)
 
     def get_last_event_of(self, home_id, person_id, size=None):
         params = dict(home_id=home_id, person_id=person_id)
@@ -237,7 +237,7 @@ class NetatmoClient(object):
         if response['status'] != "ok":
             raise InvalidStatusCode(httplib.INTERNAL_SERVER_ERROR, response)
         else:
-            return response['body']
+            return response.get('body')
 
     def _request_tokens(self, form):
         response = NetatmoClient._invoke(requests.post, NetatmoClient.TOKEN_URL, data=form)
@@ -254,9 +254,11 @@ class NetatmoClient(object):
             return False
 
     @staticmethod
-    def _invoke(inovation, url, **kwargs):
-        logging.debug('%s - %s', inovation.__name__, kwargs.get('data'))
-        response = inovation(url, verify=False, proxies=NetatmoClient.PROXY, **kwargs)
+    def _invoke(invocation, url, **kwargs):
+        logging.debug('%s - %s', invocation.__name__, kwargs.get('data'))
+        kwargs['verify'] = False
+        kwargs['proxies'] = NetatmoClient.PROXY
+        response = invocation(url, **kwargs)
         return NetatmoClient.check_status_code(response)
 
     @staticmethod
