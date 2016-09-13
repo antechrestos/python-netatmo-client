@@ -1,5 +1,7 @@
 Netatmo python client
 =====================
+.. image:: https://img.shields.io/pypi/v/netatmo-client.svg
+    :target: https://pypi.python.org/pypi/netatmo-client
 .. image:: https://img.shields.io/github/license/antechrestos/python-netatmo-client.svg
 	:target: https://raw.githubusercontent.com/antechrestos/python-netatmo-client/master/LICENSE
 
