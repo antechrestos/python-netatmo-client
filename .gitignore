@@ -1,3 +1,6 @@
 .idea/
 *.pyc
 test/sandbox.py
+dist/
+netatmo_client.egg-info/
+
