@@ -31,22 +31,36 @@ class Domain(object):
     def __init__(self, api_caller):
         self._api_caller = api_caller
 
+    @staticmethod
+    def _set_optional(form, parameter_name, parameter_value):
+        if parameter_value is not None:
+            form[parameter_name] = parameter_value
+
+
+class Common(Domain):
+    def get_measure(self, device_id, module_id, scale, measure_types, date_begin=None, date_end=None,
+                    limit=None, optimize=None, real_time=None):
+        params = dict(device_id=device_id, module_id=module_id, scale=scale, type=','.join(measure_types))
+        Domain._set_optional(params, 'date_begin', date_begin)
+        Domain._set_optional(params, 'date_end', date_end)
+        Domain._set_optional(params, 'limit', limit)
+        Domain._set_optional(params, 'optimize', optimize)
+        Domain._set_optional(params, 'real_time', real_time)
+        return self._api_caller(requests.get, '/getmeasure', params=params)
+
 
 class Station(Domain):
     def get_station_data(self, device_id=None, get_favorites=False):
         params = dict()
-        if device_id is not None:
-            params['device_id'] = device_id
-        if get_favorites:
-            params['get_favorites'] = True
+        Domain._set_optional(params, 'device_id', device_id)
+        Domain._set_optional(params, 'get_favorites', get_favorites if get_favorites else None)
         return self._api_caller(requests.get, '/getstationsdata', params=params)
 
 
 class Thermostat(Domain):
     def get_thermostat_data(self, device_id=None):
         params = dict()
-        if device_id is not None:
-            params['device_id'] = device_id
+        Domain._set_optional(params, 'device_id', device_id)
         return self._api_caller(requests.get, '/getthermostatsdata', params=params)
 
     def create_new_schedule(self, device_id, module_id, name, zones, timetable):
@@ -55,10 +69,8 @@ class Thermostat(Domain):
 
     def set_therm_point(self, device_id, module_id, setpoint_mode, setpoint_endtime=None, setpoint_temp=None):
         form = dict(device_id=device_id, module_id=module_id, setpoint_mode=setpoint_mode)
-        if setpoint_endtime is not None:
-            form['setpoint_endtime'] = setpoint_endtime
-        if setpoint_temp is not None:
-            form['setpoint_temp'] = setpoint_temp
+        Domain._set_optional(form, 'setpoint_endtime', setpoint_endtime)
+        Domain._set_optional(form, 'setpoint_temp', setpoint_temp)
         self._api_caller(requests.post, '/setthermpoint', data=form)
 
     def switch_schedule(self, device_id, module_id, schedule_id):
@@ -73,11 +85,9 @@ class Thermostat(Domain):
 class Camera(Domain):
     def get_home_data(self, home_id=None, number_of_events=None):
         params = dict()
-        if home_id is not None:
-            params['home_id'] = home_id
-        if number_of_events is not None:
-            params['size'] = number_of_events
-        return self._api_caller(requests.get, '/gethomedata', params=params)
+        Domain._set_optional(params, 'home_id', home_id)
+        Domain._set_optional(params, 'size', number_of_events)
+        return self._sizeapi_caller(requests.get, '/gethomedata', params=params)
 
     def get_camera_picture(self, image_id, key):
         params = dict(image_id=image_id, key=key)
@@ -87,16 +97,14 @@ class Camera(Domain):
         params = dict(home_id=home_id, event_id=event_id)
         return self._api_caller(requests.get, '/geteventsuntil', params=params)
 
-    def get_next_events(self, home_id, event_id, size=None):
+    def get_next_events(self, home_id, event_id, number_of_events=None):
         params = dict(home_id=home_id, event_id=event_id)
-        if size is not None:
-            params['size'] = size
+        Domain._set_optional(params, 'size', number_of_events)
         return self._api_caller(requests.get, '/getnextevents', params=params)
 
-    def get_last_event_of(self, home_id, person_id, size=None):
+    def get_last_event_of(self, home_id, person_id, number_of_events=None):
         params = dict(home_id=home_id, person_id=person_id)
-        if size is not None:
-            params['size'] = size
+        Domain._set_optional(params, 'size', number_of_events)
         return self._api_caller(requests.get, '/getlasteventof', params=params)
 
     def add_webhook(self, url):
@@ -146,6 +154,7 @@ class NetatmoClient(object):
         self.client_secret = client_secret
         self._access_token = None
         self._refresh_token = None
+        self._common = Common(self._call_api)
         self._station = Station(self._call_api)
         self._thermostat = Thermostat(self._call_api)
         self._camera = Camera(self._call_api)
@@ -182,6 +191,11 @@ class NetatmoClient(object):
                     refresh_token=refresh_token if refresh_token is not None else self._refresh_token,
                     grant_type='refresh_token')
         self._request_tokens(form)
+
+    @property
+    def common(self):
+        self._check_token()
+        return self._common
 
     @property
     def station(self):

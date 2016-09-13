@@ -81,7 +81,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'getnextevents', 'GET.json')
 
-        result = self.client.camera.get_next_events(home_id=home_id, event_id=event_id, size=size)
+        result = self.client.camera.get_next_events(home_id=home_id, event_id=event_id, number_of_events=size)
         self.assertEqual(len(result['events_list']), 30)
 
     @mock.patch('netatmo_client.client.requests')
@@ -103,7 +103,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'getlasteventof', 'GET.json')
 
-        result = self.client.camera.get_last_event_of(home_id=home_id, person_id=person_id, size=size)
+        result = self.client.camera.get_last_event_of(home_id=home_id, person_id=person_id, number_of_events=size)
         self.assertEqual(len(result['events_list']), 51)
 
     @mock.patch('netatmo_client.client.requests')

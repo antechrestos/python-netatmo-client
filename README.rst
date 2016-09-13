@@ -75,6 +75,8 @@ The api calls
 
 The client defines three parts:
 
+- ``common``:
+    - ``get_measure``
 - ``station``:
     - ``get_station_data``
 - ``thermostat``:
