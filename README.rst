@@ -48,20 +48,29 @@ Grant code process
 ~~~~~~~~~~~~~~~~~~
 
 Providing that you declared ``http://somewhere.org/callback/grant/code`` as a **redirect uri** on the netatmo site,
-you may generate your *grant code* url.
+you may get your tokens using the grant code way with a code like follows.
 
 .. code-block:: python
 
-    client.generate_auth_url('http://somewhere.org/callback/grant/code', 'state-generated', *scopes)
+    client = NetatmoClient('client-id', 'client-secret')
+    scopes = ('read_station',
+              'read_thermostat',
+              'write_thermostat',
+              'read_camera')
+    redirect_uri = 'http://somewhere.org/callback/grant/code'
+    grant_url = client.generate_auth_url(redirect_uri, 'state-test', *scopes)
+    sys.stdout\
+        .write("Open the following url ( %s ), follow the steps and enter the code you will see in the navigation bar: "
+               % grant_url)
+    code = sys.stdin.readline()
+    code = code.rstrip('\r\n')
+    client.request_token_with_code(code, redirect_uri, *scopes)
+    # use the api
+    print json.dumps(client.station.get_station_data())
 
 The user will be lead to the grant code process and return to your site with
-a url such as ``http://somewhere.org/callback/grant/code?code=<your code>&state=state-generated``
-
-Then all you have to do is **exchange** the code with a couple of *access token* and *refresh token*:
-
-.. code-block:: python
-
-    client.request_token_with_code('your code', 'http://somewhere.org/callback/grant/code', *scopes)
+a url such as ``http://somewhere.org/callback/grant/code?code=<your code>&state=state-test``.
+Then normally a webserver of yours handles the `GET` request, and exchanges the code using the same **redirect uri** as above.
 
 Client credentials
 ~~~~~~~~~~~~~~~~~~
@@ -70,6 +79,11 @@ You may also choose this process as follows:
 
 .. code-block:: python
 
+    client = NetatmoClient('client-id', 'client-secret')
+    scopes = ('read_station',
+              'read_thermostat',
+              'write_thermostat',
+              'read_camera')
     client.request_token_with_client_credentials('username', 'password', *scopes)
 
 The api calls
