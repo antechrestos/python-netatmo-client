@@ -64,7 +64,11 @@ class Thermostat(Domain):
         return self._api_caller(requests.get, '/getthermostatsdata', params=params)
 
     def create_new_schedule(self, device_id, module_id, name, zones, timetable):
-        form = dict(device_id=device_id, module_id=module_id, name=name, zones=zones, timetable=timetable)
+        form = dict(device_id=device_id,
+                    module_id=module_id,
+                    name=name,
+                    zones=json.dumps(zones),
+                    timetable=json.dumps(timetable))
         return self._api_caller(requests.post, '/createnewschedule', data=form)
 
     def set_therm_point(self, device_id, module_id, setpoint_mode, setpoint_endtime=None, setpoint_temp=None):
@@ -78,16 +82,19 @@ class Thermostat(Domain):
         self._api_caller(requests.post, '/switchschedule', data=form)
 
     def sync_schedule(self, device_id, module_id, zones, timetable):
-        form = dict(device_id=device_id, module_id=module_id, zones=zones, timetable=timetable)
+        form = dict(device_id=device_id,
+                    module_id=module_id,
+                    zones=json.dumps(zones),
+                    timetable=json.dumps(timetable))
         self._api_caller(requests.post, '/syncschedule', data=form)
 
 
-class Camera(Domain):
+class Welcome(Domain):
     def get_home_data(self, home_id=None, number_of_events=None):
         params = dict()
         Domain._set_optional(params, 'home_id', home_id)
         Domain._set_optional(params, 'size', number_of_events)
-        return self._sizeapi_caller(requests.get, '/gethomedata', params=params)
+        return self._api_caller(requests.get, '/gethomedata', params=params)
 
     def get_camera_picture(self, image_id, key):
         params = dict(image_id=image_id, key=key)
@@ -157,7 +164,7 @@ class NetatmoClient(object):
         self._common = Common(self._call_api)
         self._station = Station(self._call_api)
         self._thermostat = Thermostat(self._call_api)
-        self._camera = Camera(self._call_api)
+        self._welcome = Welcome(self._call_api)
 
     def generate_auth_url(self, redirect_uri, state, *scopes):
         parameters = dict(client_id=self.client_id,
@@ -208,9 +215,9 @@ class NetatmoClient(object):
         return self._thermostat
 
     @property
-    def camera(self):
+    def welcome(self):
         self._check_token()
-        return self._camera
+        return self._welcome
 
     def _check_token(self):
         if self._access_token is None or self._refresh_token is None:

@@ -7,7 +7,7 @@ from abstract_test_case import AbstractTestCase
 from fake_requests import mock_response
 
 
-class TestCamera(unittest.TestCase, AbstractTestCase):
+class TestWelcome(unittest.TestCase, AbstractTestCase):
     def setUp(self):
         self.build_client()
 
@@ -19,7 +19,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           httplib.OK,
                                           None,
                                           'api', 'gethomedata', 'GET.json')
-        result = self.client.camera.get_home_data()
+        result = self.client.welcome.get_home_data()
         self.assertEqual(result['user']['country'], 'FR')
         self.assertEqual(len(result['homes']), 1)
 
@@ -38,7 +38,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'gethomedata', 'GET_{id}.json')
 
-        result = self.client.camera.get_home_data(home_id=home_id)
+        result = self.client.welcome.get_home_data(home_id=home_id)
         self.assertEqual(result['user']['country'], 'FR')
         self.assertEqual(len(result['homes']), 1)
 
@@ -59,7 +59,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'geteventsuntil', 'GET.json')
 
-        result = self.client.camera.get_events_until(home_id=home_id, event_id=event_id)
+        result = self.client.welcome.get_events_until(home_id=home_id, event_id=event_id)
         self.assertEqual(len(result['events_list']), 4)
 
     @mock.patch('netatmo_client.client.requests')
@@ -81,7 +81,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'getnextevents', 'GET.json')
 
-        result = self.client.camera.get_next_events(home_id=home_id, event_id=event_id, number_of_events=size)
+        result = self.client.welcome.get_next_events(home_id=home_id, event_id=event_id, number_of_events=size)
         self.assertEqual(len(result['events_list']), 30)
 
     @mock.patch('netatmo_client.client.requests')
@@ -103,7 +103,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'getlasteventof', 'GET.json')
 
-        result = self.client.camera.get_last_event_of(home_id=home_id, person_id=person_id, number_of_events=size)
+        result = self.client.welcome.get_last_event_of(home_id=home_id, person_id=person_id, number_of_events=size)
         self.assertEqual(len(result['events_list']), 51)
 
     @mock.patch('netatmo_client.client.requests')
@@ -123,7 +123,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                            None,
                                            'api', 'addwebhook', 'POST.json')
 
-        self.client.camera.add_webhook(url=url)
+        self.client.welcome.add_webhook(url=url)
 
     @mock.patch('netatmo_client.client.requests')
     def test_drop_webhook(self, fake_requests):
@@ -139,7 +139,7 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                            None,
                                            'api', 'dropwebhook', 'POST.json')
 
-        self.client.camera.drop_webhook()
+        self.client.welcome.drop_webhook()
 
     @mock.patch('netatmo_client.client.requests')
     def test_get_camera_picture(self, fake_requests):
@@ -158,5 +158,5 @@ class TestCamera(unittest.TestCase, AbstractTestCase):
                                           None,
                                           'api', 'getcamerapicture', 'GET.bin')
 
-        result = self.client.camera.get_camera_picture(image_id=image_id, key=key)
+        result = self.client.welcome.get_camera_picture(image_id=image_id, key=key)
         self.assertEqual(len(result), 21638)

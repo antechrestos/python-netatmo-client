@@ -87,7 +87,7 @@ The client defines three parts:
     - ``set_therm_point``
     - ``switch_schedule``
     - ``sync_schedule``
-- ``camera``
+- ``welcome``
     - ``get_camera_picture``
     - ``get_events_until``
     - ``get_next_events``
