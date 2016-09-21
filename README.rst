@@ -85,6 +85,8 @@ You may also choose this process as follows:
               'write_thermostat',
               'read_camera')
     client.request_token_with_client_credentials('username', 'password', *scopes)
+    # use the api
+    print json.dumps(client.thermostat.get_thermostat_data())
 
 The api calls
 -------------
