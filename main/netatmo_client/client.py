@@ -36,6 +36,11 @@ class Domain(object):
         if parameter_value is not None:
             form[parameter_name] = parameter_value
 
+    @staticmethod
+    def _set_json_parameter(form, parameter_name, parameter_value):
+        if parameter_value is not None:
+            form[parameter_name] = json.dumps(parameter_value, separators=(',', ':'))
+
 
 class Common(Domain):
     def get_measure(self, device_id, module_id, scale, measure_types, date_begin=None, date_end=None,
@@ -66,9 +71,9 @@ class Thermostat(Domain):
     def create_new_schedule(self, device_id, module_id, name, zones, timetable):
         form = dict(device_id=device_id,
                     module_id=module_id,
-                    name=name,
-                    zones=json.dumps(zones),
-                    timetable=json.dumps(timetable))
+                    name=name)
+        Domain._set_json_parameter(form, 'zones', zones)
+        Domain._set_json_parameter(form, 'timetable', timetable)
         return self._api_caller(requests.post, '/createnewschedule', data=form)
 
     def set_therm_point(self, device_id, module_id, setpoint_mode, setpoint_endtime=None, setpoint_temp=None):
@@ -83,9 +88,9 @@ class Thermostat(Domain):
 
     def sync_schedule(self, device_id, module_id, zones, timetable):
         form = dict(device_id=device_id,
-                    module_id=module_id,
-                    zones=json.dumps(zones),
-                    timetable=json.dumps(timetable))
+                    module_id=module_id)
+        Domain._set_json_parameter(form, 'zones', zones)
+        Domain._set_json_parameter(form, 'timetable', timetable)
         self._api_caller(requests.post, '/syncschedule', data=form)
 
 
