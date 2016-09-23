@@ -95,6 +95,8 @@ The client defines three parts:
 
 - ``common``:
     - ``get_measure``
+- ``public``:
+    - ``get_public_data``
 - ``station``:
     - ``get_station_data``
 - ``thermostat``:

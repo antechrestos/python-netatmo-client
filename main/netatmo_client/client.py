@@ -54,6 +54,15 @@ class Common(Domain):
         return self._api_caller(requests.get, '/getmeasure', params=params)
 
 
+class Public(Domain):
+    def get_public_data(self, lat_ne, lon_ne, lat_sw, lon_sw, required_measure_types=None, filter_abnormal=None):
+        params = dict(lat_ne=lat_ne, lon_ne=lon_ne, lat_sw=lat_sw, lon_sw=lon_sw)
+        Domain._set_optional(params, 'required_data',
+                             None if required_measure_types is None else ','.join(required_measure_types))
+        Domain._set_optional(params, 'filter', filter_abnormal)
+        return self._api_caller(requests.get, '/getpublicdata', params=params)
+
+
 class Station(Domain):
     def get_station_data(self, device_id=None, get_favorites=False):
         params = dict()
@@ -167,6 +176,7 @@ class NetatmoClient(object):
         self._access_token = None
         self._refresh_token = None
         self._common = Common(self._call_api)
+        self._public = Public(self._call_api)
         self._station = Station(self._call_api)
         self._thermostat = Thermostat(self._call_api)
         self._welcome = Welcome(self._call_api)
@@ -208,6 +218,11 @@ class NetatmoClient(object):
     def common(self):
         self._check_token()
         return self._common
+
+    @property
+    def public(self):
+        self._check_token()
+        return self._public
 
     @property
     def station(self):
