@@ -9,7 +9,13 @@ The python-netatmo-client repo contains a Python client library for Netatmo.
 
 Installing
 ==========
-So far only source is the way of installing it:
+
+From pip
+------------
+
+.. code-block:: bash
+
+	$ pip install netatmo-client
 
 From sources
 ------------
