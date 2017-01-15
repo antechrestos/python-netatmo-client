@@ -26,18 +26,24 @@ class MockResponse(object):
             yield b
 
 
+def load_resource_path(binary_file, *path_parts):
+    with(open(os.path.join(os.path.dirname(__file__), 'fixtures', *path_parts),
+              'rb' if binary_file else 'r')) as f:
+        return f.read()
+
+
 def mock_response(url, method_name, check_data, status_code, headers, *path_parts):
     if len(path_parts) > 0:
         file_name = path_parts[len(path_parts) - 1]
         extension_idx = file_name.rfind('.')
         binary_file = extension_idx >= 0 and file_name[extension_idx:] == '.bin'
-        with(open(os.path.join(os.path.dirname(__file__), 'fixtures', *path_parts),
-                  'rb' if binary_file else 'r')) as f:
-            response = MockResponse(url=url,
-                                    status_code=status_code,
-                                    text=f.read() if not binary_file else None,
-                                    headers=headers,
-                                    content=f.read() if binary_file else None)
+        file_content = load_resource_path(binary_file, *path_parts)
+        response = MockResponse(url=url,
+                                status_code=status_code,
+                                text=file_content if not binary_file else None,
+                                headers=headers,
+                                content=file_content if binary_file else None)
+
     else:
         response = MockResponse(url, status_code, '')
     if check_data is not None:
