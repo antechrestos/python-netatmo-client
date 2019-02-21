@@ -32,7 +32,7 @@ def load_resource_path(binary_file, *path_parts):
         return f.read()
 
 
-def mock_response(url, method_name, check_data, status_code, headers, *path_parts):
+def mock_response(url, status_code, headers, *path_parts):
     if len(path_parts) > 0:
         file_name = path_parts[len(path_parts) - 1]
         extension_idx = file_name.rfind('.')
@@ -46,14 +46,5 @@ def mock_response(url, method_name, check_data, status_code, headers, *path_part
 
     else:
         response = MockResponse(url, status_code, '')
-    if check_data is not None:
-        response.check_data = check_data
 
-    def invocation(invoked_url, **kwargs):
-        if invoked_url != url:
-            raise AssertionError('%s and %s does not match' % (url, invoked_url))
-        response.check_data(**kwargs)
-        return response
-
-    invocation.__name__ = method_name
-    return invocation
+    return response

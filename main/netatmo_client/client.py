@@ -2,9 +2,9 @@ import httplib
 import json
 import logging
 import os
-import urllib
 
 import requests
+from oauth2_client.credentials_manager import CredentialManager, ServiceInformation
 
 _logger = logging.getLogger(__name__)
 
@@ -51,7 +51,7 @@ class Common(Domain):
         Domain._set_optional(params, 'limit', limit)
         Domain._set_optional(params, 'optimize', optimize)
         Domain._set_optional(params, 'real_time', real_time)
-        return self._api_caller(requests.get, '/getmeasure', params=params)
+        return self._api_caller._get('/getmeasure', params=params)
 
 
 class Public(Domain):
@@ -60,22 +60,28 @@ class Public(Domain):
         Domain._set_optional(params, 'required_data',
                              None if required_measure_types is None else ','.join(required_measure_types))
         Domain._set_optional(params, 'filter', filter_abnormal)
-        return self._api_caller(requests.get, '/getpublicdata', params=params)
+        return self._api_caller._get('/getpublicdata', params=params)
 
 
-class Station(Domain):
+class Weather(Domain):
     def get_station_data(self, device_id=None, get_favorites=False):
         params = dict()
         Domain._set_optional(params, 'device_id', device_id)
         Domain._set_optional(params, 'get_favorites', get_favorites if get_favorites else None)
-        return self._api_caller(requests.get, '/getstationsdata', params=params)
+        return self._api_caller._get('/getstationsdata', params=params)
 
 
-class Thermostat(Domain):
+class Energy(Domain):
+    def get_home_data(self, home_id=None, *gateway_types):
+        params = dict()
+        Domain._set_optional(params, 'home_id', home_id)
+        Domain._set_optional(params, 'gateway_type', None if len(gateway_types) == 0 else ','.join(gateway_types))
+        return self._api_caller._get('/homesdata', params=params)
+
     def get_thermostat_data(self, device_id=None):
         params = dict()
         Domain._set_optional(params, 'device_id', device_id)
-        return self._api_caller(requests.get, '/getthermostatsdata', params=params)
+        return self._api_caller._get('/getthermostatsdata', params=params)
 
     def create_new_schedule(self, device_id, module_id, name, zones, timetable):
         form = dict(device_id=device_id,
@@ -83,58 +89,54 @@ class Thermostat(Domain):
                     name=name)
         Domain._set_json_parameter(form, 'zones', zones)
         Domain._set_json_parameter(form, 'timetable', timetable)
-        return self._api_caller(requests.post, '/createnewschedule', data=form)
+        return self._api_caller._post('/createnewschedule', data=form)
 
     def set_therm_point(self, device_id, module_id, setpoint_mode, setpoint_endtime=None, setpoint_temp=None):
         form = dict(device_id=device_id, module_id=module_id, setpoint_mode=setpoint_mode)
         Domain._set_optional(form, 'setpoint_endtime', setpoint_endtime)
         Domain._set_optional(form, 'setpoint_temp', setpoint_temp)
-        self._api_caller(requests.post, '/setthermpoint', data=form)
+        self._api_caller._post('/setthermpoint', data=form)
 
     def switch_schedule(self, device_id, module_id, schedule_id):
         form = dict(device_id=device_id, module_id=module_id, schedule_id=schedule_id)
-        self._api_caller(requests.post, '/switchschedule', data=form)
+        self._api_caller._post('/switchschedule', data=form)
 
     def sync_schedule(self, device_id, module_id, zones, timetable):
         form = dict(device_id=device_id,
                     module_id=module_id)
         Domain._set_json_parameter(form, 'zones', zones)
         Domain._set_json_parameter(form, 'timetable', timetable)
-        self._api_caller(requests.post, '/syncschedule', data=form)
+        self._api_caller._post('/syncschedule', data=form)
 
 
-class Welcome(Domain):
-    def get_home_data(self, home_id=None, number_of_events=None):
-        params = dict()
-        Domain._set_optional(params, 'home_id', home_id)
-        Domain._set_optional(params, 'size', number_of_events)
-        return self._api_caller(requests.get, '/gethomedata', params=params)
-
+class Security(Domain):
     def get_camera_picture(self, image_id, key):
         params = dict(image_id=image_id, key=key)
-        return self._api_caller(requests.get, '/getcamerapicture', params=params, raw_api_call=True).content
+        return self._api_caller.check_status_code(
+            self._api_caller.get('%s/getcamerapicture' % NetatmoClient.API_BASE_URL, params=params)
+        ).content
 
     def get_events_until(self, home_id, event_id):
         params = dict(home_id=home_id, event_id=event_id)
-        return self._api_caller(requests.get, '/geteventsuntil', params=params)
+        return self._api_caller._get('/geteventsuntil', params=params)
 
     def get_next_events(self, home_id, event_id, number_of_events=None):
         params = dict(home_id=home_id, event_id=event_id)
         Domain._set_optional(params, 'size', number_of_events)
-        return self._api_caller(requests.get, '/getnextevents', params=params)
+        return self._api_caller._get('/getnextevents', params=params)
 
     def get_last_event_of(self, home_id, person_id, number_of_events=None):
         params = dict(home_id=home_id, person_id=person_id)
         Domain._set_optional(params, 'size', number_of_events)
-        return self._api_caller(requests.get, '/getlasteventof', params=params)
+        return self._api_caller._get('/getlasteventof', params=params)
 
     def add_webhook(self, url):
         data = dict(url=url, app_types='app_camera')
-        self._api_caller(requests.post, '/addwebhook', data=data)
+        self._api_caller._post('/addwebhook', data=data)
 
     def drop_webhook(self):
         data = dict(app_types='app_camera')
-        self._api_caller(requests.post, '/dropwebhook', data=data)
+        self._api_caller._post('/dropwebhook', data=data)
 
     def ping(self, home_id, camera_id):
         home = self.get_home_data(home_id, 0)
@@ -157,7 +159,7 @@ class Welcome(Domain):
         return False
 
 
-class NetatmoClient(object):
+class NetatmoClient(CredentialManager):
     AUTHORIZED_URL = 'https://api.netatmo.com/oauth2/authorize'
 
     TOKEN_URL = 'https://api.netatmo.com/oauth2/token'
@@ -170,139 +172,118 @@ class NetatmoClient(object):
 
     PROXY = dict(http=os.environ.get('HTTP_PROXY', ''), https=os.environ.get('HTTPS_PROXY', ''))
 
-    def __init__(self, client_id, client_secret):
-        self.client_id = client_id
-        self.client_secret = client_secret
-        self._access_token = None
-        self._refresh_token = None
-        self._common = Common(self._call_api)
-        self._public = Public(self._call_api)
-        self._station = Station(self._call_api)
-        self._thermostat = Thermostat(self._call_api)
-        self._welcome = Welcome(self._call_api)
+    def __init__(self, client_id, client_secret, scopes):
+        super(NetatmoClient, self).__init__(ServiceInformation(self.AUTHORIZED_URL,
+                                                               self.TOKEN_URL,
+                                                               client_id, client_secret,
+                                                               scopes),
+                                            self.PROXY)
+        self._common = Common(self)
+        self._public = Public(self)
+        self._weather = Weather(self)
+        self._energy = Energy(self)
+        self._security = Security(self)
+        self._access_token_value = None
 
-    def generate_auth_url(self, redirect_uri, state, *scopes):
-        parameters = dict(client_id=self.client_id,
-                          redirect_uri=redirect_uri,
-                          scope=' '.join(scopes),
-                          state=state)
-        return '%s?%s' % (NetatmoClient.AUTHORIZED_URL,
-                          '&'.join('%s=%s' % (k, urllib.quote(v, safe='~()*!.\'')) for k, v in parameters.items()))
+    def _grant_code_request(self, code, redirect_uri):
+        result = super(NetatmoClient, self)._grant_code_request(code, redirect_uri)
+        result['client_id'] = self.service_information.client_id
+        result['client_secret'] = self.service_information.client_secret
+        return result
 
-    def request_token_with_code(self, code, redirect_uri, *scopes):
-        form = dict(client_id=self.client_id,
-                    client_secret=self.client_secret,
-                    redirect_uri=redirect_uri,
-                    scope=' '.join(scopes),
-                    code=code,
-                    grant_type='authorization_code')
-        self._request_tokens(form)
+    def _grant_password_request(self, login, password):
+        result = super(NetatmoClient, self)._grant_password_request(login, password)
+        result['client_id'] = self.service_information.client_id
+        result['client_secret'] = self.service_information.client_secret
+        return result
 
-    def request_token_with_client_credentials(self, username, password, *scopes):
-        form = dict(client_id=self.client_id,
-                    client_secret=self.client_secret,
-                    username=username,
-                    password=password,
-                    scope=' '.join(scopes),
-                    grant_type='password')
-        self._request_tokens(form)
+    def _grant_refresh_token_request(self, refresh_token):
+        result = super(NetatmoClient, self)._grant_refresh_token_request(refresh_token)
+        result.pop('scope')
+        result['client_id'] = self.service_information.client_id
+        result['client_secret'] = self.service_information.client_secret
+        return result
 
-    def request_refresh_token(self, refresh_token=None):
-        form = dict(client_id=self.client_id,
-                    client_secret=self.client_secret,
-                    refresh_token=refresh_token if refresh_token is not None else self._refresh_token,
-                    grant_type='refresh_token')
-        self._request_tokens(form)
+    def _token_request(self, request_parameters, refresh_token_mandatory):
+        response = requests.post(NetatmoClient.TOKEN_URL, data=request_parameters)
+        if response.status_code != 200:
+            CredentialManager._handle_bad_response(response)
+        else:
+            self._process_token_response(response.json(), refresh_token_mandatory)
+
+    @property
+    def _access_token(self):
+        return self._access_token_value
+
+    @_access_token.setter
+    def _access_token(self, access_token):
+        if self._session is None:
+            self._session = requests.Session()
+            self._session.proxies = self.proxies
+            self._session.verify = self.service_information.verify
+            self._session.trust_env = False
+        self._access_token_value = access_token
+
+    def _bearer_request(self, method, url, **kwargs):
+        headers = kwargs.get('headers')
+        if headers is None:
+            headers = dict()
+            kwargs['headers'] = headers
+        if 'params' in kwargs:
+            kwargs['params']['access_token'] = self._access_token
+        elif 'data' in kwargs:
+            kwargs['data']['access_token'] = self._access_token
+        else:
+            kwargs['params'] = dict(access_token=self._access_token)
+        _logger.debug("_bearer_request on %s - %s" % (method.__name__, url))
+        response = method(url, **kwargs)
+        if self.refresh_token is not None and self._is_token_expired(response):
+            self._refresh_token()
+            return method(url, **kwargs)
+        else:
+            return response
 
     @property
     def common(self):
-        self._check_token()
         return self._common
 
     @property
     def public(self):
-        self._check_token()
         return self._public
 
     @property
-    def station(self):
-        self._check_token()
-        return self._station
+    def weather(self):
+        return self._weather
 
     @property
-    def thermostat(self):
-        self._check_token()
-        return self._thermostat
+    def energy(self):
+        return self._energy
 
     @property
-    def welcome(self):
-        self._check_token()
-        return self._welcome
-
-    def _check_token(self):
-        if self._access_token is None or self._refresh_token is None:
-            raise NoTokenProvided()
-
-    def _call_api(self, method, uri, **kwargs):
-        def _set_token_in_request():
-            if 'params' in kwargs:
-                kwargs['params']['access_token'] = self._access_token
-            elif 'data' in kwargs:
-                kwargs['data']['access_token'] = self._access_token
-            else:
-                kwargs['params'] = dict(access_token=self._access_token)
-
-        _set_token_in_request()
-        try:
-            response = NetatmoClient._invoke(method,
-                                             '%s%s' % (NetatmoClient.API_BASE_URL, uri),
-                                             **kwargs)
-        except InvalidStatusCode, i:
-            if NetatmoClient._is_token_expired(i):
-                try:
-                    self.request_refresh_token()
-                    _set_token_in_request()
-                    response = NetatmoClient._invoke(method,
-                                                     '%s%s' % (NetatmoClient.API_BASE_URL, uri),
-                                                     **kwargs)
-                except InvalidStatusCode, other:
-                    if other.status_code / 100 == 4:
-                        self._access_token = None
-                        self._refresh_token = None
-                    raise
-            else:
-                raise
-        if kwargs.get('raw_api_call', False):
-            return response
-        else:
-            result = response.json()
-            _logger.debug('%s - %s', uri, json.dumps(result))
-            if result['status'] != "ok":
-                raise InvalidStatusCode(httplib.INTERNAL_SERVER_ERROR, result)
-            else:
-                return result.get('body')
-
-    def _request_tokens(self, form):
-        response = NetatmoClient._invoke(requests.post, NetatmoClient.TOKEN_URL, data=form)
-        tokens = response.json()
-        self._access_token = tokens['access_token']
-        self._refresh_token = tokens['refresh_token']
+    def security(self):
+        return self._security
 
     @staticmethod
-    def _is_token_expired(i):
-        if i.status_code == httplib.FORBIDDEN and type(i.body) == dict and i.body.get('error') is not None:
-            code = i.body['error'].get('code')
-            return code == NetatmoClient.INVALID_ACCESS_TOKEN or code == NetatmoClient.ACCESS_TOKEN_EXPIRED
+    def _is_token_expired(response):
+        if response.status_code == httplib.FORBIDDEN :
+            try:
+                body = response.json()
+                code = body.get('error', dict()).get('code')
+                return code == NetatmoClient.INVALID_ACCESS_TOKEN or code == NetatmoClient.ACCESS_TOKEN_EXPIRED
+            except Exception:
+                return False
         else:
             return False
 
-    @staticmethod
-    def _invoke(invocation, url, **kwargs):
-        logging.debug('%s - %s', invocation.__name__, kwargs.get('data'))
-        kwargs['verify'] = False
-        kwargs['proxies'] = NetatmoClient.PROXY
-        response = invocation(url, **kwargs)
-        return NetatmoClient.check_status_code(response)
+    def _get(self, url, params=None, **kwargs):
+        return self.check_status_code(
+            self.get('%s%s' % (NetatmoClient.API_BASE_URL, url), params=params, **kwargs)
+        ).json().get('body')
+
+    def _post(self, url, data=None, json=None, **kwargs):
+        return self.check_status_code(
+            self.post('%s%s' % (NetatmoClient.API_BASE_URL, url), data=data, json=json, **kwargs)
+        ).json().get('body')
 
     @staticmethod
     def check_status_code(response):

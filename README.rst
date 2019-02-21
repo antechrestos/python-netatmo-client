@@ -43,7 +43,7 @@ Build an instance
               'read_camera')
     client_id = 'client id'
     client_secret = 'client secret'
-    client = NetatmoClient(client_id, client_secret)
+    client = NetatmoClient(client_id, client_secret, scopes)
 
 Get the tokens
 --------------
@@ -58,21 +58,20 @@ you may get your tokens using the grant code way with a code like follows.
 
 .. code-block:: python
 
-    client = NetatmoClient('client-id', 'client-secret')
-    scopes = ('read_station',
+    client = NetatmoClient('client-id', 'client-secret', ['read_station',
               'read_thermostat',
               'write_thermostat',
-              'read_camera')
+              'read_camera'])
     redirect_uri = 'http://somewhere.org/callback/grant/code'
-    grant_url = client.generate_auth_url(redirect_uri, 'state-test', *scopes)
+    grant_url = client.generate_authorize_url(redirect_uri, 'state-test')
     sys.stdout\
         .write("Open the following url ( %s ), follow the steps and enter the code you will see in the navigation bar: "
                % grant_url)
     code = sys.stdin.readline()
     code = code.rstrip('\r\n')
-    client.request_token_with_code(code, redirect_uri, *scopes)
+    client.init_with_authorize_code(redirect_uri, code)
     # use the api
-    print json.dumps(client.station.get_station_data())
+    print json.dumps(client.weather.get_station_data())
 
 The user will be lead to the grant code process and return to your site with
 a url such as ``http://somewhere.org/callback/grant/code?code=<your code>&state=state-test``.
@@ -85,37 +84,37 @@ You may also choose this process as follows:
 
 .. code-block:: python
 
-    client = NetatmoClient('client-id', 'client-secret')
-    scopes = ('read_station',
-              'read_thermostat',
-              'write_thermostat',
-              'read_camera')
-    client.request_token_with_client_credentials('username', 'password', *scopes)
+    client = NetatmoClient('client-id', 'client-secret', [
+                                                            'read_station',
+                                                            'read_thermostat',
+                                                            'write_thermostat',
+                                                            'read_camera'])
+    client.init_with_user_credentials('username', 'password')
     # use the api
-    print json.dumps(client.thermostat.get_thermostat_data())
+    print json.dumps(client.energy.get_home_data(None, 'NaPlug', 'NaCamera'))
 
 The api calls
 -------------
 
-The client defines three parts:
+The client defines several parts:
 
 - ``common``:
     - ``get_measure``
 - ``public``:
     - ``get_public_data``
-- ``station``:
+- ``weather``:
     - ``get_station_data``
-- ``thermostat``:
+- ``energy``:
+    - ``get_home_data``
     - ``get_thermostat_data``
     - ``create_new_schedule``
     - ``set_therm_point``
     - ``switch_schedule``
     - ``sync_schedule``
-- ``welcome``
+- ``security``
     - ``get_camera_picture``
     - ``get_events_until``
     - ``get_next_events``
-    - ``get_home_data``
     - ``get_last_event_of``
     - ``add_webhook``
     - ``drop_webhook``
